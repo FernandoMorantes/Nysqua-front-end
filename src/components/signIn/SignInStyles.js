@@ -11,6 +11,7 @@ export const signInStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    alignContent: 'center',
   },
   avatar: {
     margin: theme.spacing(1),
