@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export const signInStyles = makeStyles(theme => ({
   '@global': {
     body: {
-      backgroundColor: '#d81b60',
+      backgroundColor: '#FAFAFA',
     },  
   },
   paper: {
@@ -20,7 +20,7 @@ export const signInStyles = makeStyles(theme => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
+  leftIcon: {
+    marginRight: theme.spacing(1),
   },
 }));
