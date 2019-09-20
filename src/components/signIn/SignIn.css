@@ -1,8 +1,17 @@
 .padding_1 {
     height: 5vh;
+    
 }
 .facebook_btn{
-    padding: 1vh 1vw 1vh 0;
+    padding: 1vh 4vw 1vh 0;
+
+
+
+
+}
+.social_icons{
+    align-items: center;
+
 }
 
 .google_btn {
@@ -71,3 +80,8 @@
 #or::after {
     right: 0;
 }
+
+.react-icons {
+    vertical-align: middle;
+  
+  }

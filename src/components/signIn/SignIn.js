@@ -17,6 +17,11 @@ import {signInStyles} from './SignInStyles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { FaFacebookF } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
+import { IconContext } from "react-icons";
+
 import './SignIn.css';
 
 function Copyright() {
@@ -93,12 +98,13 @@ export default function SignIn() {
   const SocialMedia = withStyles({
     root: {
       border: '1px solid rgba(0, 0, 0, 0.3)',
+      borderRadius: '50% !important',
       color: 'rgba(0, 0, 0, 0.5)',
       backgroundColor: 'white',
-      height: 48,
+      //height: 48,
       boxShadow: '0 3px 5px 2px rgba(255, 255, 255, .3)',
-      paddingRight: '1vw',
-      fontSize: '0.95rem',
+      padding: '1vw 1vw',
+      fontSize: '0.95rem', 
       transitionProperty: 'color, border',
       transitionDuration: '0.2s, 0.2s',
       '&:hover': {
@@ -125,38 +131,51 @@ export default function SignIn() {
         <h1>Inicia sesion con</h1>
       </div>
 
-      <ThemeProvider theme={theme}>
-        <Grid container>
-          <Grid item xs>
-            < div className = "facebook_btn" >
-              < SocialMedia
-                type = "submit"
-                fullWidth
-                variant = "contained"
-                size = "medium"
-                text = "bold" 
-              >
-                <FacebookIcon className={classes.leftIcon} /> 
-                Facebook
-              </SocialMedia>
-            </div>
+
+      <div className="social_icons"> 
+        <ThemeProvider theme={theme}>
+          <Grid container>
+            <Grid item xs>
+              < div className = "facebook_btn" >
+                < SocialMedia
+                  type = "submit"
+          
+                  variant = "contained"
+                  size = "medium"
+                  text = "bold" 
+                >
+                  <IconContext.Provider value={{ size: "2.5em ", className: 'react-icons' }}>
+                    <div>
+                      <FaFacebookF  />
+                    </div>
+                  </IconContext.Provider>
+                  
+                </SocialMedia>
+              </div>
+            </Grid>
+            <Grid item xs>
+              < div className = "google_btn" >
+                < SocialMedia
+                  type = "submit"
+                  variant = "contained"
+                  size = "medium"
+                  text = "bold" 
+                >
+                  <IconContext.Provider value={{ size: "2.5em ", className: 'react-icons' }}>
+                    <div>
+                      <FaGoogle />
+                    </div>
+                  </IconContext.Provider>
+
+                </SocialMedia>
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs>
-            < div className = "google_btn" >
-              < SocialMedia
-                type = "submit"
-                fullWidth
-                variant = "contained"
-                size = "medium"
-                text = "bold" 
-              >
-                <FiberManualRecordIcon className={classes.leftIcon} /> 
-                Google
-              </SocialMedia>
-            </div>
-          </Grid>
-        </Grid>
-      </ThemeProvider>
+        </ThemeProvider>
+      </div>
+
+
+
 
       <div id="or">O</div>
 

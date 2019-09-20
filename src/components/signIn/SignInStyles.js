@@ -22,6 +22,9 @@ export const signInStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
   },
   leftIcon: {
-    marginRight: theme.spacing(1),
+    //  marginRight: theme.spacing(1),
+
+
+
   },
 }));
