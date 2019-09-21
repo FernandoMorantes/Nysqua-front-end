@@ -3,16 +3,30 @@
     
 }
 
-.social_media_btns{
+.paper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.form{
+    width: '100%';
+    margin-top: 2vh;
+}
+
+.social_media_btn{
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    align-content: center;
+
 }
 
 .social_icons{
     width: 100%;
-    flex-grow: 1;
+
 }
 
 .login_link {
