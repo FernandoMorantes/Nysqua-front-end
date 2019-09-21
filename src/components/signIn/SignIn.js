@@ -1,5 +1,4 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -8,34 +7,16 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, withStyles, createMuiTheme  } from '@material-ui/core/styles';
+import { withStyles, createMuiTheme  } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Container from '@material-ui/core/Container';
 import {signInStyles} from './SignInStyles';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { FaFacebookF } from 'react-icons/fa';
-import { FaFacebook } from 'react-icons/fa';
 import { FaGoogle } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 
 import './SignIn.css';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 export default function SignIn() {
   const classes = signInStyles();
@@ -101,7 +82,6 @@ export default function SignIn() {
       borderRadius: '50% !important',
       color: 'rgba(0, 0, 0, 0.5)',
       backgroundColor: 'white',
-      //height: 48,
       boxShadow: '0 3px 5px 2px rgba(255, 255, 255, .3)',
       padding: '1vw 1vw',
       fontSize: '0.95rem', 
@@ -116,10 +96,6 @@ export default function SignIn() {
         boxShadow: '0 3px 5px 2px rgba(255, 255, 255, .3)',
       },
     },
-    label: {
-      textTransform: 'capitalize',
-    },
-    
   })(Button);
 
   return (
@@ -134,39 +110,34 @@ export default function SignIn() {
 
       <div className="social_icons"> 
         <ThemeProvider theme={theme}>
-          <Grid container>
-            <Grid item xs>
-              < div className = "facebook_btn" >
+          < Grid container>
+            < Grid item xs={12} sm={6}>
+              < div className = "social_media_btn" >
                 < SocialMedia
                   type = "submit"
-          
                   variant = "contained"
                   size = "medium"
-                  text = "bold" 
-                >
-                  <IconContext.Provider value={{ size: "2.5em ", className: 'react-icons' }}>
+                  text = "bold" >
+                  <IconContext.Provider value={{ size: "2em", className: 'react-icons' }}>
                     <div>
                       <FaFacebookF  />
                     </div>
                   </IconContext.Provider>
-                  
                 </SocialMedia>
               </div>
             </Grid>
-            <Grid item xs>
-              < div className = "google_btn" >
+            <Grid item xs={12} sm={6}>
+              < div className = "social_media_btn" >
                 < SocialMedia
                   type = "submit"
                   variant = "contained"
                   size = "medium"
-                  text = "bold" 
-                >
-                  <IconContext.Provider value={{ size: "2.5em ", className: 'react-icons' }}>
+                  text = "bold" >
+                  <IconContext.Provider value={{ size: "2em ", className: 'react-icons' }}>
                     <div>
                       <FaGoogle />
                     </div>
                   </IconContext.Provider>
-
                 </SocialMedia>
               </div>
             </Grid>
