@@ -28,29 +28,20 @@ class SignIn extends Component {
     super(props);
 
     this.state = {
-      showPassword: false 
-    };
-  }
-
-  render(){
-    const values = {
       email: '',
-      password: '',
+      showPassword: false ,
+      password: ''
     };
 
-    const handleChange = prop => event => {
-      values[prop] = event.target.value;
-    };
+    this.handleChange = this.handleChange.bind(this);
 
-    const handleClickShowPassword = () => {
-      this.setState({ showPassword: !this.state.showPassword });
-    };
+    this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
 
-    const handleMouseDownPassword = event => {
+    this.handleMouseDownPassword = event => {
       event.preventDefault();
     };
 
-    const theme = createMuiTheme({
+    this.theme = createMuiTheme({
       palette: {
         primary: {
           main: '#FE6B8B'
@@ -58,7 +49,7 @@ class SignIn extends Component {
       },
     });
 
-    const StyledTextField = withStyles({
+    this.StyledTextField = withStyles({
       root: {
         '& label.Mui-focused': {
           color: '#FE6B8B',
@@ -80,7 +71,7 @@ class SignIn extends Component {
       },
     })(TextField);
 
-    const StyledButton = withStyles({
+    this.StyledButton = withStyles({
       root: {
         backgroundImage: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
         borderRadius: 3,
@@ -105,7 +96,7 @@ class SignIn extends Component {
       },
     })(Button);
 
-    const SocialMedia = withStyles({
+    this.SocialMedia = withStyles({
       root: {
 
         border: '1px solid rgba(0, 0, 0, 0.3)',
@@ -127,7 +118,18 @@ class SignIn extends Component {
         },
       },
     })(Button);
+  }
 
+  handleChange(event){
+    var prop = String(event.target.id);
+    this.setState({ [prop]: event.target.value });
+  }
+
+  handleClickShowPassword(){
+    this.setState({ showPassword: !this.state.showPassword });
+  }
+    
+  render(){
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -139,11 +141,11 @@ class SignIn extends Component {
 
 
           <div className="social_icons">
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={this.theme}>
               < Grid container>
                 < Grid item xs={12} sm={6}>
                   < div className="social_media_btn" >
-                    < SocialMedia
+                    < this.SocialMedia
                       type="submit"
                       variant="contained"
                       size="medium"
@@ -153,12 +155,12 @@ class SignIn extends Component {
                           <FaFacebookF />
                         </div>
                       </IconContext.Provider>
-                    </SocialMedia>
+                    </this.SocialMedia>
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   < div className="social_media_btn" >
-                    < SocialMedia
+                    < this.SocialMedia
                       type="submit"
                       variant="contained"
                       size="medium"
@@ -168,7 +170,7 @@ class SignIn extends Component {
                           <FaGoogle />
                         </div>
                       </IconContext.Provider>
-                    </SocialMedia>
+                    </this.SocialMedia>
                   </div>
                 </Grid>
               </Grid>
@@ -179,7 +181,7 @@ class SignIn extends Component {
 
           <form className="form" noValidate>
 
-            < StyledTextField
+            < this.StyledTextField
               variant="outlined"
               margin="normal"
               fullWidth
@@ -187,10 +189,10 @@ class SignIn extends Component {
               label="Correo electronico"
               name="email"
               autoComplete="email"
-              onChange={handleChange('email')}
+              onChange={this.handleChange}
             />
 
-            < StyledTextField
+            < this.StyledTextField
               variant="outlined"
               margin="normal"
               fullWidth
@@ -199,16 +201,16 @@ class SignIn extends Component {
               id="password"
               autoComplete="current-password"
               type={this.state.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
+              //value={this.state.password}
+              onChange={this.handleChange}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
                       edge="end"
                       aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}>
+                      onClick={this.handleClickShowPassword}
+                      onMouseDown={this.handleMouseDownPassword}>
                       {(this.state.showPassword) ? (<VisibilityOff />) : (<Visibility />)}
                     </IconButton>
                   </InputAdornment>
@@ -216,16 +218,16 @@ class SignIn extends Component {
               }}
             />
 
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={this.theme}>
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
             </ThemeProvider>
 
-            < StyledButton onClick={() => {
-              console.log(values.password);
-              console.log(values.email);
+            < this.StyledButton onClick={() => {
+              console.log(this.state.email);
+              console.log(this.state.password);
             }}
 
               fullWidth
@@ -233,7 +235,7 @@ class SignIn extends Component {
               variant="contained"
               size="medium"
               text="bold"
-            > Inicia sesion </StyledButton>
+            > Inicia sesion </this.StyledButton>
 
             <div className="login_link">
               < a href="#"> Olvidaste tu contraseña? </a>
