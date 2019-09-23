@@ -8,12 +8,19 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    margin-top: 7vh;
+    
+}
+
+.internal_paper{
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    margin-left: 3vh;
+    margin-right: 3vh;
 }
 
 .form{
     width: '100%';
-    margin-top: 2vh;
+    margin-top: 0vh;
 }
 
 .social_media_btn{
@@ -57,7 +64,7 @@
     align-items: center;
     align-content: center;
     text-align: center;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
 }
 
 .title h1 {
@@ -71,7 +78,7 @@
     height: 50px;
     line-height: 50px;
     text-align: center;
-    margin-top: 1.5vh;
+    margin-top: -2vh;
     color: rgba(0, 0, 0, 0.5);
 }
 

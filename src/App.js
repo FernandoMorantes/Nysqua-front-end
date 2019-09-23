@@ -6,7 +6,7 @@ import SingIn from './components/signIn/SignIn.js';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <div className="cards_container">
         <div className="logo_Card">
           <h1>Logo de la aplicacion</h1>

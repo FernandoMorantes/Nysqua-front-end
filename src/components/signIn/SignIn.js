@@ -19,8 +19,11 @@ import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import axios from 'axios';
 
 import './SignIn.css';
+
+
 
 class SignIn extends Component {
 
@@ -40,6 +43,7 @@ class SignIn extends Component {
     this.handleMouseDownPassword = event => {
       event.preventDefault();
     };
+    
 
     this.theme = createMuiTheme({
       palette: {
@@ -120,6 +124,16 @@ class SignIn extends Component {
     })(Button);
   }
 
+/*   componentDidMount() {
+    axios.get('https://dog.ceo/api/breeds/image/random')
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  } */
+
   handleChange(event){
     var prop = String(event.target.id);
     this.setState({ [prop]: event.target.value });
@@ -134,116 +148,127 @@ class SignIn extends Component {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className="paper">
+          <div className="internal_paper">
 
-          <div className="title">
-            <h1>Inicia sesion con</h1>
-          </div>
-
-
-          <div className="social_icons">
-            <ThemeProvider theme={this.theme}>
-              < Grid container>
-                < Grid item xs={12} sm={6}>
-                  < div className="social_media_btn" >
-                    < this.SocialMedia
-                      type="submit"
-                      variant="contained"
-                      size="medium"
-                      text="bold" >
-                      <IconContext.Provider value={{ size: "2em", className: 'react-icons' }}>
-                        <div>
-                          <FaFacebookF />
-                        </div>
-                      </IconContext.Provider>
-                    </this.SocialMedia>
-                  </div>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  < div className="social_media_btn" >
-                    < this.SocialMedia
-                      type="submit"
-                      variant="contained"
-                      size="medium"
-                      text="bold" >
-                      <IconContext.Provider value={{ size: "2em ", className: 'react-icons' }}>
-                        <div>
-                          <FaGoogle />
-                        </div>
-                      </IconContext.Provider>
-                    </this.SocialMedia>
-                  </div>
-                </Grid>
-              </Grid>
-            </ThemeProvider>
-          </div>
-
-          <div id="or">O</div>
-
-          <form className="form" noValidate>
-
-            < this.StyledTextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              id="email"
-              label="Correo electronico"
-              name="email"
-              autoComplete="email"
-              onChange={this.handleChange}
-            />
-
-            < this.StyledTextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              name="password"
-              label="Contraseña"
-              id="password"
-              autoComplete="current-password"
-              type={this.state.showPassword ? 'text' : 'password'}
-              //value={this.state.password}
-              onChange={this.handleChange}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      edge="end"
-                      aria-label="toggle password visibility"
-                      onClick={this.handleClickShowPassword}
-                      onMouseDown={this.handleMouseDownPassword}>
-                      {(this.state.showPassword) ? (<VisibilityOff />) : (<Visibility />)}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-
-            <ThemeProvider theme={this.theme}>
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-            </ThemeProvider>
-
-            < this.StyledButton onClick={() => {
-              console.log(this.state.email);
-              console.log(this.state.password);
-            }}
-
-              fullWidth
-              focusRipple
-              variant="contained"
-              size="medium"
-              text="bold"
-            > Inicia sesion </this.StyledButton>
-
-            <div className="login_link">
-              < a href="#"> Olvidaste tu contraseña? </a>
+            <div className="title">
+              <h1>Inicia sesion con</h1>
             </div>
 
-          </form>
-        </div>
-        <Box mt={8}>
+
+            <div className="social_icons">
+              <ThemeProvider theme={this.theme}>
+                < Grid container>
+                  < Grid item xs={12} sm={6}>
+                    < div className="social_media_btn" >
+                      < this.SocialMedia
+                        type="submit"
+                        variant="contained"
+                        size="medium"
+                        text="bold" >
+                        <IconContext.Provider value={{ size: "1.9em", className: 'react-icons' }}>
+                          <div>
+                            <FaFacebookF />
+                          </div>
+                        </IconContext.Provider>
+                      </this.SocialMedia>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    < div className="social_media_btn" >
+                      < this.SocialMedia
+                        type="submit"
+                        variant="contained"
+                        size="medium"
+                        text="bold" >
+                        <IconContext.Provider value={{ size: "1.9em ", className: 'react-icons' }}>
+                          <div>
+                            <FaGoogle />
+                          </div>
+                        </IconContext.Provider>
+                      </this.SocialMedia>
+                    </div>
+                  </Grid>
+                </Grid>
+              </ThemeProvider>
+            </div>
+
+            <div id="or">O</div>
+
+            <form className="form" noValidate>
+
+              < this.StyledTextField
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                id="email"
+                label="Correo electronico"
+                name="email"
+                autoComplete="email"
+                onChange={this.handleChange}
+              />
+
+              < this.StyledTextField
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                name="password"
+                label="Contraseña"
+                id="password"
+                autoComplete="current-password"
+                type={this.state.showPassword ? 'text' : 'password'}
+                //value={this.state.password}
+                onChange={this.handleChange}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        edge="end"
+                        aria-label="toggle password visibility"
+                        onClick={this.handleClickShowPassword}
+                        onMouseDown={this.handleMouseDownPassword}>
+                        {(this.state.showPassword) ? (<VisibilityOff />) : (<Visibility />)}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+
+              <ThemeProvider theme={this.theme}>
+                <FormControlLabel
+                  control={<Checkbox value="remember" color="primary" />}
+                  label="Remember me"
+                />
+              </ThemeProvider>
+
+              < this.StyledButton onClick={() => {
+                axios.post('url', {
+                  email: this.state.email,
+                  password: this.state.password,
+                })
+                .then((response) => {
+                  console.log(response.data);
+                }, (error) => {
+                  console.log(error);
+                });
+
+              }}
+
+                fullWidth
+                focusRipple
+                variant="contained"
+                size="medium"
+                text="bold"
+              > Inicia sesion </this.StyledButton>
+
+              <div className="login_link">
+                < a href="#"> Olvidaste tu contraseña? </a>
+              </div>
+
+            </form>
+          </div>
+        </div> 
+     
+        <Box mt={5}>
           < div className="login_link" >
             <p className="login_text">
               No tienes una cuenta? <a href="#" > Registrate </a>
